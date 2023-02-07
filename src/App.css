@@ -1,0 +1,29 @@
+nav {
+  background-color: rgb(0, 0, 100);
+}
+
+#footer {
+  background-color: #424242;
+  color: white;
+
+}
+
+.navbar-nav li a{
+  color: rgb(255, 255, 255);
+  padding-left: 5px;
+  align-items: center;
+}
+.nav-item{
+   padding-left: 6px;
+}
+
+
+#Main {
+  color: rgb(255, 255, 255);
+  font-family: 'Times New Roman', Times, serif;
+}
+.rounded {
+    height: 100px !important;
+    width: 100px !important;
+    border-radius: 50% !important;
+}
