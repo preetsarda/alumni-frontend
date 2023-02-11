@@ -2,6 +2,42 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from "react-router-dom";
 function Login() {
+    const [logTry,setlogTry]=useState({
+        email:"",
+        pwd:""
+    })
+    async function onSubmit() {
+        const newlogTry = { ...logTry };
+        const Response = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            crossDomain: true,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newlogTry),
+        })
+            .catch(error => {
+                window.alert(error);
+            });
+        const res=await Response.json();
+        if(res.Log==1){
+            window.alert("Login successful")
+        }
+        else{
+            window.alert("Login not found")
+        }
+        
+        setlogTry({
+            email: "",
+            pwd: "",
+        });
+    }
+    function updatelogTry(value){
+        return setlogTry((prev)=>{
+            return { ...prev, ...value };
+        })
+    }
     return (
         <React.Fragment>
             <div className="collapse navbar-collapse justify-content-end" id="NAVIGATION">
@@ -36,14 +72,14 @@ function Login() {
                         <div className="modal-body mx-3">
                             <div className="md-form mhtb-5">
                                 <i className="fas fa-envelope prefix grey-text" />
-                                <input type="email" id="defaultForm-email" className="form-control validate" />
+                                <input value={logTry.email} onChange={(e) => updatelogTry({ email: e.target.value })} type="email" id="defaultForm-email" className="form-control validate" />
                                 <label data-error="wrong" data-success="right" htmlFor="defaultForm-email">
                                     Your email
                                 </label>
                             </div>
                             <div className="md-form mb-4">
                                 <i className="fas fa-lock prefix grey-text" />
-                                <input type="password" id="defaultForm-pass" className="form-control validate" />
+                                <input value={logTry.pwd} onChange={(e) => updatelogTry({ pwd: e.target.value })} type="password" id="defaultForm-pass" className="form-control validate" />
                                 <label data-error="wrong" data-success="right" htmlFor="defaultForm-pass">
                                     Your password
                                 </label>
@@ -55,7 +91,7 @@ function Login() {
                             </div>
                         </div>
                         <div className="modal-footer d-flex justify-content-center">
-                            <button id="login_Button" className="btn btn-primary">
+                            <button onClick={onSubmit} id="login_Button" className="btn btn-primary">
                                 Login
                             </button>
                         </div>

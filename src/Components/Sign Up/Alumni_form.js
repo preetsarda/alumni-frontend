@@ -16,7 +16,8 @@ function Alumni_Form() {
         studentID: "",
         occupation: "",
         organization: "",
-        graduationyear: 2011
+        graduationyear: 2011,
+        status:0,
     });
 
     // const navigate = useNavigate();
@@ -56,7 +57,8 @@ function Alumni_Form() {
             studentID: "",
             occupation: "",
             organization: "",
-            graduationyear:2011
+            graduationyear:2011,
+            status:0,
         });
     }
     return (

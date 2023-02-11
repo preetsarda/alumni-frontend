@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 function AlumProfile() {
     return (
         <div className='container'>

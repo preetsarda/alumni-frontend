@@ -3,7 +3,6 @@ import { ReactDOM } from "react";
 function Testimonial() {
     async function ab() {
         const Response = await fetch("http://localhost:5000/testimonials", {
-            method: "POST",
             crossDomain: true,
             headers: {
                 "Access-Control-Allow-Origin": "*",
